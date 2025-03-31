@@ -1,0 +1,133 @@
+/* 基础样式 */
+body {
+    background: #1a1a1a;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: '微软雅黑', sans-serif;
+    touch-action: manipulation;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 20px 0;
+}
+
+h1 {
+    position: absolute;
+    top: -50px;
+    width: 100%;
+    margin: 0;
+    font-size: 28px;
+    transition: top 0.3s ease-out;
+    will-change: transform;
+}
+
+.candle-container {
+    position: relative;
+    height: 260px; /* 固定容器高度 */
+    margin: 100px auto 70px;
+    width: 60px;
+}
+
+.candle {
+    width: 60px;
+    height: 200px;
+    background: linear-gradient(to right, #f0e6d2, #fff5e6);
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    transition: height 2s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+}
+
+.flame-container {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 60px;
+    pointer-events: none;
+}
+
+.flame {
+    width: 25px;
+    height: 50px;
+    background: radial-gradient(circle at 50% 0%, #ff9900, #ff3300 60%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.1s infinite alternate;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    will-change: transform;
+}
+
+.wax-drip {
+    position: absolute;
+    background: #fff5e6;
+    border-radius: 3px;
+}
+
+.message {
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 1s, bottom 0.3s ease-out;
+    will-change: transform;
+}
+
+/* 动画 */
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); }
+    100% { transform: translateX(-50%) scale(1.05) rotate(1deg); }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .container {
+        transform: scale(0.8);
+        transform-origin: center top;
+    }
+
+    h1 {
+        font-size: 24px;
+        top: -40px;
+    }
+
+    .candle-container {
+        margin: 80px auto 50px;
+        width: 40px;
+        height: 210px;
+    }
+
+    .candle {
+        width: 40px;
+        height: 150px;
+    }
+
+    .flame-container {
+        top: -40px;
+        width: 20px;
+        height: 40px;
+    }
+
+    .flame {
+        width: 18px;
+        height: 36px;
+    }
+
+    .message {
+        font-size: 18px;
+        bottom: -50px;
+    }
+}
